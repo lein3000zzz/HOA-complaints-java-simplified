@@ -13,7 +13,6 @@ import java.util.Objects;
 public class RequestServiceImpl implements RequestService {
     private static RequestService obj;
     private final RequestRepository repo;
-    private final Autoincrement idGenerator = new Autoincrement();
 
     private RequestServiceImpl() {
         this.repo = RequestRepositoryInMemImpl.getInstance();
@@ -49,10 +48,7 @@ public class RequestServiceImpl implements RequestService {
 
         validateParams(idComplaining, requestType, houseAddress, textRequest, status);
 
-        long id = idGenerator.increment();
-
         Request newRequest = Request.builder()
-                .id(id)
                 .idComplaining(idComplaining)
                 .type(requestType)
                 .houseAddress(houseAddress)

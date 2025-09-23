@@ -1,30 +1,25 @@
 package org.severov_v.service;
 
-import org.severov_v.entities.Request;
-import org.severov_v.entities.RequestStatus;
-import org.severov_v.entities.RequestType;
 import org.severov_v.entities.Resident;
 import org.severov_v.repository.ResidentRepository;
 import org.severov_v.repository.ResidentRepositoryInMemImpl;
-import org.severov_v.utils.Autoincrement;
 
 import java.util.List;
 import java.util.Objects;
 
 public class ResidentServiceImpl implements ResidentService {
-    private static ResidentService obj;
+    private static ResidentService service;
     private final ResidentRepository repo;
-    private final Autoincrement idGenerator = new Autoincrement();
 
     private ResidentServiceImpl() {
         this.repo = ResidentRepositoryInMemImpl.getInstance();
     }
 
     public static ResidentService getInstance() {
-        if (obj == null) {
-            obj = new ResidentServiceImpl();
+        if (service == null) {
+            service = new ResidentServiceImpl();
         }
-        return obj;
+        return service;
     }
 
     @Override
@@ -50,10 +45,7 @@ public class ResidentServiceImpl implements ResidentService {
             throw new IllegalArgumentException("Resident with this phone number already exists");
         }
 
-        long id = idGenerator.increment();
-
         Resident newResident = Resident.builder()
-                .id(id)
                 .phoneNumber(phoneNumber)
                 .fullName(fullName)
                 .build();

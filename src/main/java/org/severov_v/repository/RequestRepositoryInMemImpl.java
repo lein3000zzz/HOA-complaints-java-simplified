@@ -3,6 +3,7 @@ package org.severov_v.repository;
 import org.severov_v.entities.Request;
 import org.severov_v.entities.RequestStatus;
 import org.severov_v.entities.RequestType;
+import org.severov_v.utils.Autoincrement;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,6 +13,7 @@ import java.util.Optional;
 public class RequestRepositoryInMemImpl implements RequestRepository {
     private static RequestRepositoryInMemImpl repo;
     private final List<Request> storage = new ArrayList<>();
+    private final Autoincrement idGenerator = new Autoincrement();
 
     private RequestRepositoryInMemImpl() {}
 
@@ -24,6 +26,7 @@ public class RequestRepositoryInMemImpl implements RequestRepository {
 
     @Override
     public synchronized void create(Request object) {
+        object.setId(idGenerator.increment());
         storage.add(object);
     }
 

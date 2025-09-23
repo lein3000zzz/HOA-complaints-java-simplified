@@ -2,6 +2,7 @@ package org.severov_v.repository;
 
 import org.severov_v.entities.Request;
 import org.severov_v.entities.Resident;
+import org.severov_v.utils.Autoincrement;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,6 +12,7 @@ import java.util.Optional;
 public class ResidentRepositoryInMemImpl implements ResidentRepository {
     private static ResidentRepositoryInMemImpl obj;
     private final List<Resident> storage = new ArrayList<>();
+    private final Autoincrement idGenerator = new Autoincrement();
 
     private ResidentRepositoryInMemImpl() {}
 
@@ -23,6 +25,7 @@ public class ResidentRepositoryInMemImpl implements ResidentRepository {
 
     @Override
     public synchronized void create(Resident object) {
+        object.setId(idGenerator.increment());
         storage.add(object);
     }
 
