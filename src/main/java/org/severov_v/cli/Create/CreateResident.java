@@ -35,6 +35,6 @@ public class CreateResident implements Command {
 
     @Override
     public String getCommandName() {
-        return "Add request";
+        return "Add resident";
     }
 }

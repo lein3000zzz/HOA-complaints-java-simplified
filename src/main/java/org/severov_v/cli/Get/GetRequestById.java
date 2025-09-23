@@ -21,11 +21,11 @@ public class GetRequestById implements Command {
     public void execute() {
         System.out.print("Enter request id: ");
         int id = scanner.nextInt();
-        Request r = service.getById(id);
-        if (r == null) {
+        Request request = service.getById(id);
+        if (request == null) {
             System.out.println("Request not found.");
         } else {
-            System.out.println(r);
+            System.out.println(request);
         }
     }
 
