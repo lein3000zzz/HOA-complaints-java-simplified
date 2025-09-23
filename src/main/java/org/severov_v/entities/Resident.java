@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Resident {
-    private int id;
+    private long id;
     private String phoneNumber;
     private String fullName;
 }

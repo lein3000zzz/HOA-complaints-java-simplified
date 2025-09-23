@@ -32,6 +32,10 @@ public class Menu {
                 System.out.println("wrong command");
                 scanner.nextLine();
                 continue;
+            } catch (IllegalArgumentException iae){
+                System.out.println(iae.getMessage());
+                scanner.nextLine();
+                continue;
             }
 
             if(inputCommand == -1){

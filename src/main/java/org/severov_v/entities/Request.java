@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Request {
     private long id;
-    private int idComplaining;
+    private long idComplaining;
     private String houseAddress;
     private RequestType type;
     private String complaintText;

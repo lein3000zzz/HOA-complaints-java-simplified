@@ -9,7 +9,8 @@ import java.util.List;
 public interface RequestService extends Service<Request, Integer> {
     List<Request> getByComplaint(String complaint);
     List<Request> getByStatus(RequestStatus status);
-    List<Request> getByEmployeeId(RequestType type);
+    List<Request> getByRequestType(RequestType type);
     List<Request> getByAddress(String address);
+    List<Request> getByComplainingId(long id);
 //    List<Request> getByHouseId(int houseId);
 }

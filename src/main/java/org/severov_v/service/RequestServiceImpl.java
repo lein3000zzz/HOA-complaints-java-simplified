@@ -1,6 +1,5 @@
 package org.severov_v.service;
 
-import lombok.Getter;
 import org.severov_v.entities.Request;
 import org.severov_v.entities.RequestStatus;
 import org.severov_v.entities.RequestType;
@@ -28,7 +27,7 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public Request getById(int id) {
+    public Request getById(long id) {
         return repo.getById(id);
     }
 
@@ -41,27 +40,22 @@ public class RequestServiceImpl implements RequestService {
     public synchronized void create(String[] params) {
         Objects.requireNonNull(params);
 
-        int idComplaining = params.length > 0 ? Integer.parseInt(params[0]) : 0;
+        long idComplaining = params.length > 0 ? Long.parseLong(params[0]) : -1;
         RequestType requestType = params.length > 1 ? RequestType.valueOf(params[1].toUpperCase()) : null;
-        String textRequest = params.length > 2 ? params[2] : null;
+        String houseAddress = params.length > 2 ? params[2] : null;
+        String textRequest = params.length > 3 ? params[3] : null;
 
-        if (idComplaining < 0) {
-            throw new IllegalArgumentException();
-        }
-        if (requestType == null) {
-            throw new IllegalArgumentException();
-        }
-        if (textRequest == null || textRequest.isEmpty()) {
-            throw new IllegalArgumentException();
-        }
+        RequestStatus status = RequestStatus.CREATED;
+
+        validateParams(idComplaining, requestType, houseAddress, textRequest, status);
 
         long id = idGenerator.increment();
-        RequestStatus status = RequestStatus.CREATED;
 
         Request newRequest = Request.builder()
                 .id(id)
                 .idComplaining(idComplaining)
                 .type(requestType)
+                .houseAddress(houseAddress)
                 .complaintText(textRequest)
                 .status(status)
                 .build();
@@ -70,37 +64,86 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public void update(int id, String[] parameters) {
+    public void update(String[] params) {
+        Objects.requireNonNull(params);
+
+        long idToUpdate = params.length > 0 ? Long.parseLong(params[0]) : -1;
+
+        long idComplaining = params.length > 1 ? Long.parseLong(params[1]) : -1;
+        RequestType requestType = params.length > 2 ? RequestType.valueOf(params[2].toUpperCase()) : null;
+        String houseAddress = params.length > 3 ? params[3] : null;
+        String textRequest = params.length > 4 ? params[4] : null;
+        RequestStatus status = params.length > 5 ? RequestStatus.valueOf(params[5].toUpperCase()) : null;
+
+        if (idToUpdate < 0) {
+            throw new IllegalArgumentException("wrong ID to update");
+        }
+
+        validateParams(idComplaining, requestType, houseAddress, textRequest, status);
+
+        Request updatedResident = Request.builder()
+                .id(idToUpdate)
+                .idComplaining(idComplaining)
+                .type(requestType)
+                .houseAddress(houseAddress)
+                .complaintText(textRequest)
+                .status(status)
+                .build();
+
+        repo.update(updatedResident);
 
     }
 
-    @Override
-    public void delete(int id) {
+    private void validateParams(long idComplaining, RequestType requestType, String houseAddress, String textRequest, RequestStatus status) {
+        if (idComplaining < 0) {
+            throw new IllegalArgumentException("wrong idComplaining");
+        }
+        if (requestType == null) {
+            throw new IllegalArgumentException("Request type is null");
+        }
+        if (houseAddress == null || houseAddress.isEmpty()) {
+            throw new IllegalArgumentException("House address is null or empty");
+        }
+        if (textRequest == null || textRequest.isEmpty()) {
+            throw new IllegalArgumentException("Text request is null or empty");
+        }
+        if (status == null) {
+            throw new IllegalArgumentException("Status is null");
+        }
+    }
 
+    @Override
+    public void delete(long id) {
+        repo.delete(id);
     }
 
     @Override
     public void deleteAll() {
-
+        repo.deleteAll();
     }
 
     @Override
     public List<Request> getByComplaint(String complaint) {
-        return List.of();
+        return repo.getByComplaint(complaint);
     }
 
     @Override
     public List<Request> getByStatus(RequestStatus status) {
-        return List.of();
+        return repo.getByStatus(status);
     }
 
     @Override
-    public List<Request> getByEmployeeId(RequestType type) {
-        return List.of();
+    public List<Request> getByRequestType(RequestType type) {
+        return repo.getByRequestType(type);
     }
 
     @Override
     public List<Request> getByAddress(String address) {
-        return List.of();
+        return repo.getByAddress(address);
+    }
+
+    @Override
+    public List<Request> getByComplainingId(long id) {
+        return repo.getByComplainingId(id);
     }
 }

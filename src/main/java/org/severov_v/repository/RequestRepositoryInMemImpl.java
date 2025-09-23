@@ -1,6 +1,8 @@
 package org.severov_v.repository;
 
 import org.severov_v.entities.Request;
+import org.severov_v.entities.RequestStatus;
+import org.severov_v.entities.RequestType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -31,9 +33,9 @@ public class RequestRepositoryInMemImpl implements RequestRepository {
     }
 
     @Override
-    public synchronized void update(int id, Request newObject) {
+    public synchronized void update(Request newObject) {
         for (int i = 0; i < storage.size(); i++) {
-            if (storage.get(i).getId() == id) {
+            if (storage.get(i).getId() == newObject.getId()) {
                 storage.set(i, newObject);
                 return;
             }
@@ -41,7 +43,12 @@ public class RequestRepositoryInMemImpl implements RequestRepository {
     }
 
     @Override
-    public synchronized Request getById(int id) {
+    public synchronized void delete(long id) {
+        storage.remove(this.getById(id));
+    }
+
+    @Override
+    public synchronized Request getById(long id) {
         Request found = null;
         for (Request request : storage) {
             if (request.getId() == id) {
@@ -55,6 +62,71 @@ public class RequestRepositoryInMemImpl implements RequestRepository {
     @Override
     public synchronized List<Request> getAll() {
         return List.copyOf(storage);
+    }
+
+    @Override
+    public synchronized List<Request> getByComplaint(String complaintToMatch) {
+        List<Request> matched = new ArrayList<>();
+
+        for (Request request : storage) {
+            if (request.getComplaintText().contains(complaintToMatch)) {
+                matched.add(request);
+            }
+        }
+
+        return matched;
+    }
+
+    @Override
+    public synchronized List<Request> getByStatus(RequestStatus status) {
+        List<Request> matched = new ArrayList<>();
+
+        for (Request request : storage) {
+            if (request.getStatus().equals(status)) {
+                matched.add(request);
+            }
+        }
+
+        return matched;
+    }
+
+    @Override
+    public synchronized List<Request> getByRequestType(RequestType type) {
+        List<Request> matched = new ArrayList<>();
+
+        for (Request request : storage) {
+            if (request.getType().equals(type)) {
+                matched.add(request);
+            }
+        }
+
+        return matched;
+    }
+
+    @Override
+    public List<Request> getByComplainingId(long id) {
+        List<Request> matched = new ArrayList<>();
+
+        for (Request request : storage) {
+            if (request.getIdComplaining() == id) {
+                matched.add(request);
+            }
+        }
+
+        return matched;
+    }
+
+    @Override
+    public synchronized List<Request> getByAddress(String addressToMatch) {
+        List<Request> matched = new ArrayList<>();
+
+        for (Request request : storage) {
+            if (request.getHouseAddress().contains(addressToMatch)) {
+                matched.add(request);
+            }
+        }
+
+        return matched;
     }
 }
 

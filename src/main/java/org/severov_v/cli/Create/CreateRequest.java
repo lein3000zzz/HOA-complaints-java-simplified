@@ -19,14 +19,16 @@ public class CreateRequest implements Command {
     @Override
     public void execute() {
         try {
-            String[] params = new String[3];
+            String[] params = new String[4];
 
             System.out.print("idComplaining: ");
             params[0] = scanner.nextLine().trim();
             System.out.print("type (APARTMENT/HOUSE): ");
             params[1] = scanner.nextLine().trim();
-            System.out.print("complaintText: ");
+            System.out.print("houseAddress: ");
             params[2] = scanner.nextLine().trim();
+            System.out.print("complaintText: ");
+            params[3] = scanner.nextLine().trim();
 
             reqService.create(params);
             System.out.println("Request added.");

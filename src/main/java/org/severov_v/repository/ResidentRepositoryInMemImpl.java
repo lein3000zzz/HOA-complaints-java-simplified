@@ -32,9 +32,9 @@ public class ResidentRepositoryInMemImpl implements ResidentRepository {
     }
 
     @Override
-    public synchronized void update(int id, Resident newObject) {
+    public synchronized void update(Resident newObject) {
         for (int i = 0; i < storage.size(); i++) {
-            if (storage.get(i).getId() == id) {
+            if (storage.get(i).getId() == newObject.getId()) {
                 storage.set(i, newObject);
                 return;
             }
@@ -42,7 +42,12 @@ public class ResidentRepositoryInMemImpl implements ResidentRepository {
     }
 
     @Override
-    public synchronized Resident getById(int id) {
+    public synchronized void delete(long id) {
+        storage.remove(this.getById(id));
+    }
+
+    @Override
+    public synchronized Resident getById(long id) {
         Optional<Resident> opt = storage.stream().filter(r -> r.getId() == id).findFirst();
         return opt.orElse(null);
     }
@@ -52,12 +57,30 @@ public class ResidentRepositoryInMemImpl implements ResidentRepository {
         return List.copyOf(storage);
     }
 
-//    @Override
-//    public synchronized List<Resident> getByHouseId(int houseId) {
-//        List<Resident> result = new ArrayList<>();
-//        for (Resident r : storage) {
-//            if (r.getHouseAddress() == houseId) result.add(r);
-//        }
-//        return result;
-//    }
+    @Override
+    public synchronized List<Resident> getByName(String nameToMatch) {
+        List<Resident> matched = new ArrayList<>();
+
+        for (Resident resident : storage) {
+            if (resident.getFullName().contains(nameToMatch)) {
+                matched.add(resident);
+            }
+        }
+
+        return matched;
+    }
+
+    @Override
+    public synchronized Resident getByPhone(String phoneToMatch) {
+        Resident found = null;
+
+        for (Resident resident : storage) {
+            if (resident.getPhoneNumber().equals(phoneToMatch)) {
+                found = resident;
+                break;
+            }
+        }
+
+        return found;
+    }
 }

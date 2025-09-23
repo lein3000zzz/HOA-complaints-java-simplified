@@ -3,11 +3,11 @@ package org.severov_v.service;
 import java.util.List;
 
 public interface Service<T, Integer> {
-    T getById(int id);
+    T getById(long id);
     List<T> getAll();
     void create(String[] parameters);
-    void update(int id, String[] parameters);
-    void delete(int id);
+    void update(String[] parameters);
+    void delete(long id);
     void deleteAll();
 
     //какие методы должны реализовывать сервисы придумаете сами
