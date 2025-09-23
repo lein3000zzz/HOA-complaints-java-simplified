@@ -1,1 +1,1 @@
-Пример проекта для предмета ЯП Java
+Java implementation of my HOA complaints service, but extremely simplified.
