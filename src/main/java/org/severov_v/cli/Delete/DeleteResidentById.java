@@ -25,6 +25,10 @@ public class DeleteResidentById implements Command {
         } catch (NumberFormatException nfe){
             System.out.println("Impossible id");
             System.out.println("Write id again");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            System.out.println("Write id again");
+            scanner.nextLine();
         }
 
         return setId();

@@ -66,7 +66,11 @@ public class Menu {
                 continue;
             }
 
-            commands[inputCommand - 1].execute();
+            try {
+                commands[inputCommand - 1].execute();
+            } catch (Exception e) {
+                System.out.println("Error during command execution: " + e.getMessage());
+            }
         }
     }
 }

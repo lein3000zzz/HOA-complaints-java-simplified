@@ -23,6 +23,10 @@ public class DeleteRequestById implements Command {
         } catch (NumberFormatException nfe){
             System.out.println("Wrong id format");
             System.out.println("try again");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            System.out.println("Write id again");
+            scanner.nextLine();
         }
 
         return setId();
