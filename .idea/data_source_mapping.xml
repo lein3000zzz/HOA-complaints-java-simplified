@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/src/main/java/org/severov_v/db/PgManager.java" value="489f3d37-4176-4a12-92a2-642a95812cb5" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/severov_v/repository/ResidentRepositoryPgImpl.java" value="489f3d37-4176-4a12-92a2-642a95812cb5" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/create_migration.sql" value="489f3d37-4176-4a12-92a2-642a95812cb5" />
+  </component>
+</project>

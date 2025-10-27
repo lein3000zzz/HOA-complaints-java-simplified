@@ -5,6 +5,7 @@ import org.severov_v.entities.RequestStatus;
 import org.severov_v.entities.RequestType;
 import org.severov_v.repository.RequestRepository;
 import org.severov_v.repository.RequestRepositoryInMemImpl;
+import org.severov_v.repository.RequestRepositoryPgImpl;
 import org.severov_v.utils.Autoincrement;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class RequestServiceImpl implements RequestService {
     private final RequestRepository repo;
 
     private RequestServiceImpl() {
-        this.repo = RequestRepositoryInMemImpl.getInstance();
+        this.repo = RequestRepositoryPgImpl.getInstance();
     }
 
     public static RequestService getInstance() {

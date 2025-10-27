@@ -2,7 +2,7 @@ package org.severov_v.service;
 
 import org.severov_v.entities.Resident;
 import org.severov_v.repository.ResidentRepository;
-import org.severov_v.repository.ResidentRepositoryInMemImpl;
+import org.severov_v.repository.ResidentRepositoryPgImpl;
 
 import java.util.List;
 import java.util.Objects;
@@ -12,7 +12,7 @@ public class ResidentServiceImpl implements ResidentService {
     private final ResidentRepository repo;
 
     private ResidentServiceImpl() {
-        this.repo = ResidentRepositoryInMemImpl.getInstance();
+        this.repo = ResidentRepositoryPgImpl.getInstance();
     }
 
     public static ResidentService getInstance() {
