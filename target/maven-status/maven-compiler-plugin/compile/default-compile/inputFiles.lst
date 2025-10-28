@@ -12,6 +12,8 @@ C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\cli\Get\GetResidentById.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\cli\Menu.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\cli\Update\UpdateRequestById.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\cli\Update\UpdateResidentById.java
+C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\db\JDBCManager.java
+C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\db\PgManager.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\entities\Request.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\entities\RequestStatus.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\entities\RequestType.java
@@ -20,8 +22,10 @@ C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\Main.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\Repository.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\RequestRepository.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\RequestRepositoryInMemImpl.java
+C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\RequestRepositoryPgImpl.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\ResidentRepository.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\ResidentRepositoryInMemImpl.java
+C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\ResidentRepositoryPgImpl.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\service\RequestService.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\service\RequestServiceImpl.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\service\ResidentService.java

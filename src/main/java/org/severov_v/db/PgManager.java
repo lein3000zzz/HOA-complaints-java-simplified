@@ -1,8 +1,6 @@
 package org.severov_v.db;
 
 import lombok.Getter;
-import org.severov_v.repository.ResidentRepository;
-import org.severov_v.repository.ResidentRepositoryInMemImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,16 +10,16 @@ public class PgManager implements JDBCManager {
     @Getter(lazy = true)
     private static final PgManager instance = new PgManager();
 
-    private static final String url = "jdbc:postgresql://localhost:5432/complaints_service";
-    private static final String username = "postgres";
-    private static final String password = "lein";
+    private static final String URL = "jdbc:postgresql://localhost:5432/complaints_service";
+    private static final String USERNAME = "postgres";
+    private static final String PASSWORD = "lein";
 
     @Getter
     private Connection connection;
 
     private PgManager() {
         try {
-            connection = DriverManager.getConnection(url, username, password);
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("Connection to DB successful.");
             connection.createStatement().execute(
                     "BEGIN;\n" +
