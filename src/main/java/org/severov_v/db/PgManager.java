@@ -2,6 +2,8 @@ package org.severov_v.db;
 
 import lombok.Getter;
 
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -10,16 +12,24 @@ public class PgManager implements JDBCManager {
     @Getter(lazy = true)
     private static final PgManager instance = new PgManager();
 
-    private static final String URL = "jdbc:postgresql://localhost:5432/complaints_service";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "lein";
+    private static final String URI;
+    private static final String USERNAME;
+    private static final String PASSWORD;
+
+    static {
+        ResourceBundle rd = ResourceBundle.getBundle("abobus");
+
+        URI = rd.getString("PG_URI");
+        USERNAME = rd.getString("PG_USER");
+        PASSWORD = rd.getString("PG_PASSWORD");
+    }
 
     @Getter
     private Connection connection;
 
     private PgManager() {
         try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection(URI, USERNAME, PASSWORD);
             System.out.println("Connection to DB successful.");
             connection.createStatement().execute(
                     "BEGIN;\n" +
@@ -69,6 +79,15 @@ public class PgManager implements JDBCManager {
             );
         } catch (Exception e) {
             System.out.println("Connection failed, check ur db, error: " + e.getMessage());
+        }
+    }
+
+    public void closeConnection() {
+        try {
+            connection.close();
+            System.out.println("Connection closed.");
+        } catch (SQLException e) {
+            System.out.println("Couldn't close connection.");
         }
     }
 }

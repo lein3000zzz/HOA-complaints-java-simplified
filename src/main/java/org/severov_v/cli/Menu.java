@@ -13,6 +13,7 @@ import org.severov_v.cli.Get.GetRequestById;
 import org.severov_v.cli.Get.GetResidentById;
 import org.severov_v.cli.Update.UpdateRequestById;
 import org.severov_v.cli.Update.UpdateResidentById;
+import org.severov_v.db.PgManager;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -58,6 +59,7 @@ public class Menu {
 
             if(inputCommand == -1){
                 System.out.println("Program exit");
+                PgManager.getInstance().closeConnection();
                 return;
             }
 
