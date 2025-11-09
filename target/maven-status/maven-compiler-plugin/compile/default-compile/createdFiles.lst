@@ -5,6 +5,7 @@ org\severov_v\cli\Delete\DeleteRequestById.class
 org\severov_v\repository\RequestRepositoryInMemImpl.class
 org\severov_v\cli\Delete\DeleteResidentById.class
 org\severov_v\Main.class
+org\severov_v\server\ServerLauncher.class
 org\severov_v\service\ResidentService.class
 org\severov_v\cli\Command.class
 org\severov_v\entities\Resident.class
@@ -14,6 +15,7 @@ org\severov_v\service\Service.class
 org\severov_v\cli\Get\GetResidentById.class
 org\severov_v\cli\Get\GetAllRequests.class
 org\severov_v\entities\Request$RequestBuilder.class
+org\severov_v\servlets\ResidentServlet.class
 org\severov_v\db\JDBCManager.class
 org\severov_v\entities\Request.class
 org\severov_v\service\RequestService.class
@@ -29,8 +31,10 @@ org\severov_v\repository\ResidentRepositoryInMemImpl.class
 org\severov_v\service\ResidentServiceImpl.class
 org\severov_v\cli\Menu.class
 org\severov_v\entities\RequestStatus.class
+org\severov_v\servlets\RequestServlet.class
 org\severov_v\cli\Delete\DeleteAllResidents.class
 org\severov_v\cli\Create\CreateResident.class
+org\severov_v\server\ServerLauncherJetty.class
 org\severov_v\cli\Update\UpdateRequestById.class
 org\severov_v\entities\Resident$ResidentBuilder.class
 org\severov_v\repository\ResidentRepositoryPgImpl.class

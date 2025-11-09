@@ -4,7 +4,7 @@ import org.severov_v.entities.Resident;
 
 import java.util.List;
 
-public interface ResidentRepository extends Repository<Resident, Integer> {
+public interface ResidentRepository extends Repository<Resident, Long> {
     List<Resident> getByName(String name);
     Resident getByPhone(String phone);
 }

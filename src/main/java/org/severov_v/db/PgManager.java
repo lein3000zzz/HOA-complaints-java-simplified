@@ -31,6 +31,7 @@ public class PgManager implements JDBCManager {
         try {
             connection = DriverManager.getConnection(URI, USERNAME, PASSWORD);
             System.out.println("Connection to DB successful.");
+            Runtime.getRuntime().addShutdownHook(new Thread(this::closeConnection));
             connection.createStatement().execute(
                     "BEGIN;\n" +
                             "\n" +

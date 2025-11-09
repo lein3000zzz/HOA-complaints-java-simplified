@@ -1,0 +1,53 @@
+body {
+    font: 14px system-ui, sans-serif;
+    margin: 24px auto;
+    max-width: 860px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.empty {
+    font-style: italic;
+    color: #666;
+}
+
+label {
+    display: block;
+    margin: .5em 0 .25em;
+}
+
+input[type=text], input[type=number], select, textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+}
+
+textarea {
+    min-height: 80px;
+}
+
+button, input[type=submit] {
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.error {
+    color: #b00020;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 12px;
+    margin: 0 0 12px;
+}

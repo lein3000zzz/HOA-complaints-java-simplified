@@ -26,9 +26,13 @@ C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\RequestRepository
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\ResidentRepository.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\ResidentRepositoryInMemImpl.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\repository\ResidentRepositoryPgImpl.java
+C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\server\ServerLauncher.java
+C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\server\ServerLauncherJetty.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\service\RequestService.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\service\RequestServiceImpl.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\service\ResidentService.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\service\ResidentServiceImpl.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\service\Service.java
+C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\servlets\RequestServlet.java
+C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\servlets\ResidentServlet.java
 C:\Studying\vsu\vsuJava\src\main\java\org\severov_v\utils\Autoincrement.java
